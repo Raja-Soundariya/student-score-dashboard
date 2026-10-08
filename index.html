@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Score Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">STUDENT MANAGEMENT</p>
+        <h1>Student Score Dashboard</h1>
+        <p class="subtitle">Add student records, view the top 5 performers, detect duplicates, and export your data as CSV.</p>
+      </div>
+    </header>
+
+    <section class="card form-card">
+      <div class="section-heading">
+        <div>
+          <h2>Add Student</h2>
+          <p>Enter a student's name, email, and score.</p>
+        </div>
+      </div>
+
+      <form id="studentForm" novalidate>
+        <div class="form-grid">
+          <label>
+            <span>Name</span>
+            <input id="name" type="text" placeholder="e.g. Ananya Kumar" required>
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input id="email" type="email" placeholder="e.g. ananya@gmail.com" required>
+          </label>
+
+          <label>
+            <span>Score</span>
+            <input id="score" type="number" min="0" max="100" step="1" placeholder="0 - 100" required>
+          </label>
+
+          <button class="primary-btn" type="submit">Add Student</button>
+        </div>
+        <p id="formMessage" class="form-message" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-label">Total Students</span>
+        <strong id="totalStudents">0</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Duplicate Records</span>
+        <strong id="duplicateCount">0</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Highest Score</span>
+        <strong id="highestScore">—</strong>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-heading">
+        <div>
+          <h2>Top 5 Students</h2>
+          <p>Highest scores are ranked automatically.</p>
+        </div>
+      </div>
+      <div id="topFive" class="top-five"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-heading table-heading">
+        <div>
+          <h2>All Students</h2>
+          <p>Duplicate names or email addresses are highlighted.</p>
+        </div>
+        <button id="exportBtn" class="secondary-btn" type="button">Export CSV</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Score</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody"></tbody>
+        </table>
+      </div>
+      <div id="emptyState" class="empty-state">
+        No students yet. Add your first student above.
+      </div>
+    </section>
+
+    <footer>
+      <p>Student Score Dashboard · Built with HTML, CSS & JavaScript</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
